@@ -1,0 +1,15 @@
+# Netlifyへのビルド設定
+[build]
+  # サイトを組み立てるための命令（CSSを生成します）
+  command = "npm run build"
+  # ユーザーに公開するウェブページのフォルダを指定します
+  publish = "public"
+  # 通信基地プログラム（Functions）が置かれているフォルダを指定します
+  functions = "netlify/functions"
+
+[functions]
+  # 通信基地プログラムを動かすための設定です
+  node_bundler = "esbuild"
+  [functions."*"]
+    # おまけの部品「canvas」は探さないように指示します
+    external_node_modules = ["canvas"]
